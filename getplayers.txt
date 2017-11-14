@@ -1,0 +1,6 @@
+spawn telnet localhost 8081
+expect
+send "lp\r"
+expect
+send "exit\r"
+

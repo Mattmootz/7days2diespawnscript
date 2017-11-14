@@ -1,5 +1,9 @@
 #!/bin/bash
+#this script connects to the telnet server 7days to die uses.
+#expect is required for this to work as it is how it interacts with the telnet server
 
+
+#check if server is up
 serverup=$(ps -ef | grep ./7DaysToDieServer.x86_64| grep -v grep ) 
 
 if [[ $serverup == "" ]]
@@ -7,20 +11,21 @@ if [[ $serverup == "" ]]
 	echo server is down exiting
 	exit
 fi  
-
+#random 0-5 if it lands on zero do something fun.
 roll=$(( RANDOM % 5 ))
 echo "roll was $roll"
 if [[ $roll -eq "0" ]] 
 
 then
 
-/usr/bin/expect -f /user/icarus/message.txt
 
 function zombieStrippers() { 
 #find all the players and spawns zombiestrippers by them
 get player info
 /usr/bin/expect -f getplayers.txt >/tmp/out.txt
 
+#get number of players on the server
+# most likely easier way to do this but this is what I hacked together
 count=$(grep "id=" -c /tmp/out.txt)
 
 if [[ $count -le 0 ]]

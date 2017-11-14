@@ -1,0 +1,5 @@
+spawn telnet localhost 8081
+expect
+send "sea zombieFatHawaiian -140.9 195.3 -118.5 4 \r"
+expect
+send "exit \r"
